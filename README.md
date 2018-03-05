@@ -20,6 +20,8 @@ buildpack 'app' do
 end
 ```
 
+Note: This only supports to execute default actions: [:detect, :compile].
+
 ## License
 
 Copyright 2015 Yamashita, Yuu (yuu@treasure-data.com)

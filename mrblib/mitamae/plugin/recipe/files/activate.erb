@@ -1,0 +1,12 @@
+#!/bin/sh -e
+set -e
+ORIG_HOME="${HOME}"
+export HOME=<%= Shellwords.shellescape(@home) %>
+for profile in "${HOME}/.profile.d"/*; do
+  if [ -f "${profile}" ]; then
+    . "${profile}"
+  fi
+done
+export HOME="${ORIG_HOME}"
+cd <%= Shellwords.shellescape(@home) %>
+exec "${SHELL:-sh}" "$@"
