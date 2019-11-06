@@ -129,9 +129,10 @@ module ::Buildpack
 end
 ::MItamae::RecipeContext.include(::Buildpack)
 
-define :bash, code: '' do
+define :bash, code: '', cwd: nil do
   execute "bash[#{params[:name]}]" do
     command "bash -c #{params[:code].shellescape}"
+    cwd params[:cwd] if params[:cwd]
   end
 end
 
